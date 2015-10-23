@@ -1,0 +1,41 @@
+﻿@using Idbm.LocalResource
+
+@model Idbm.Models.Logins
+@{
+    ViewBag.Title = "AlreadyRegistered";
+}
+
+<h2>@Resource.Welcome</h2>
+<p>@Resource.Loginusingyouremailaddress</p>
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm("Registered", "Login"))
+        {
+
+            <fieldset>
+                <legend>@Resource.Login1</legend>
+                <form>
+                    <div class="text-danger">
+                        @TempData["Error"]
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { ID = "Email" })
+                        <span class="text-danger">@Html.ValidationMessageFor(model => model.Email)</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.EditorFor(m => m.Password, new { ID = "Password" })
+                        <span class="text-danger">@Html.ValidationMessageFor(model => model.Password)</span>
+                    </div>
+                    <input type="submit" value="@Resource.Login1" />
+                </form>
+
+            </fieldset>
+        }
+    </div>
+    <div class="col-md-6">
+
+      @Html.Action("Login","Account")  
+</div>
+</div>

@@ -1,0 +1,14 @@
+﻿@if (Session["LogedUserName"] != null) {
+     <ul class="nav navbar-nav navbar-right">
+     <li>@Html.ActionLink("LogOut", "MyHomePage", "Movie")</li>
+     </ul>  
+} else {
+    <ul class="nav navbar-nav navbar-right">
+         <li>@Html.ActionLink("Register", "AdminLogin", "Login")</li>
+        <li>@Html.ActionLink("Log in", "AlreadyRegistered", "Login")</li>
+        <!--<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>-->
+    </ul>
+}
+
+

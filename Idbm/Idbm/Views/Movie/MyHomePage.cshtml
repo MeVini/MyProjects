@@ -1,0 +1,181 @@
+﻿@using Idbm.Models;
+@using System.Web.Mvc;
+
+@model IEnumerable<Idbm.Models.Movie>
+
+@{
+    ViewBag.Title = "MyHomePage";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<h2></h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                @foreach (Movie movie in @Model)
+                {
+                    if (@movie.Id == 1)
+                    {
+                    <li data-target="#myCarousel" data-slide-to="@movie.Id" class="active" ></li>
+                    }
+                    else
+                    {
+                    <li data-target="#myCarousel" data-slide-to="@movie.Id"></li>
+                    }
+                }
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                @foreach (Movie movie in @Model)
+                {
+                    if (@movie.Id == 1)
+                    {
+                    <div class="item active">
+
+                        @{ var base64 = Convert.ToBase64String(movie.Image);
+                           var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        }
+                        <img onclick="location.href='@Url.Action("DisplayMovieByTitle", "Movie", new { title = @movie.Title })'" class="img-responsive" src="@imgSrc" />
+                    </div>
+                    }
+                    else
+                    {
+                    <div class="item">
+
+                        @{ var base64 = Convert.ToBase64String(movie.Image);
+                           var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        }
+                        <img onclick="location.href='@Url.Action("DisplayMovieByTitle", "Movie", new { title = @movie.Title })'"  class="img-responsive" src="@imgSrc" />
+                    </div>
+                    }
+                }
+            </div>
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+        <br />
+        <h4>Watch Trailer</h4>
+        <br />
+        <div id="mCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+
+            <ol class="carousel-indicators">
+                @foreach (Movie movie in @Model)
+                {
+                    if (@movie.Id == 1)
+                    {
+                    <li data-target="#mCarousel" data-slide-to="@movie.Id" class="active" ></li>
+                    }
+                    else
+                    {
+                    <li data-target="#mCarousel" data-slide-to="@movie.Id"></li>
+                    }
+                }
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                @foreach (Movie movie in @Model)
+                {
+                    if (@movie.Id == 1)
+                    {
+                    <div class="item active">
+                        <div class="item">
+                            <div class="youtube-container">
+                                <div class="youtube-player" data-id="@movie.Url"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    }
+                    else
+                    {
+                    <div class="item">
+                        <div class="youtube-container">
+                            <div class="youtube-player" data-id="@movie.Url"></div>
+                        </div>
+                    </div>
+                    }
+                }
+            </div>
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#mCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#mCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div>
+    <div class="col-md-3"></div>
+    <div class="col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">Recently Released</div>
+            <div class="panel-body">
+
+                @foreach (Movie movie in @Model)
+                {
+                    DateTime value = new DateTime(2014, 1, 18);
+                    if (@movie.ReleaseDate > value)
+                    {
+                    <p>@Html.ActionLink(@movie.Title, "DisplayMovieByTitle", "Movie", new { title = @movie.Title }, null)</p>
+                    }
+                }
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">Old</div>
+            <div class="panel-body">
+                @foreach (Movie movie in @Model)
+                {
+                    DateTime value = new DateTime(2014, 1, 18);
+                    if (@movie.ReleaseDate < value)
+                    {
+                    <p>@Html.ActionLink(@movie.Title, "DisplayMovieByTitle", "Movie", new { title = @movie.Title }, null)</p>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    (function () {
+        var v = document.getElementsByClassName("youtube-player");
+        for (var n = 0; n < v.length; n++) {
+            var p = document.createElement("div");
+            p.innerHTML = labnolThumb(v[n].dataset.id);
+            p.onclick = labnolIframe;
+            v[n].appendChild(p);
+        }
+    })();
+
+    function labnolThumb(id) {
+        return '<img class="youtube-thumb" src="//i.ytimg.com/vi/' + id + '/hqdefault.jpg"><div class="play-button"></div>';
+    }
+
+    function labnolIframe() {
+        var iframe = document.createElement("iframe");
+        iframe.setAttribute("src", "//www.youtube.com/embed/" + this.parentNode.dataset.id + "?autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&controls=0&showinfo=0");
+        iframe.setAttribute("frameborder", "0");
+        iframe.setAttribute("id", "youtube-iframe");
+        this.parentNode.replaceChild(iframe, this);
+    }
+</script>
+
+
+
+@Scripts.Render("~/bundles/jqueryval")

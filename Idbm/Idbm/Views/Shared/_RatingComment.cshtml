@@ -1,0 +1,31 @@
+﻿@model Idbm.Models.Movies
+
+@{
+    ViewBag.Title = "_RatingComment";
+}
+@if (Session["LogedUserName"] != null)
+{
+    <fieldset>
+        <legend>@Session["LogedUserName"]</legend>
+       
+    @using (Html.BeginForm("StoreComments", "Login", new { title = @Model.Title }, FormMethod.Post))
+    {
+        <form >
+            <div class="form-group">
+                <label class="text-info">Comments </label><br />
+                <textarea name="message" rows="1" cols="450"></textarea>
+            </div>
+            <label class="text-info">Rating Out Of 5</label><br />
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+            </div><br /><br />
+            <input style="float:right" class="btn btn-default" type="submit" value="Submit"/>
+        </form>
+    }
+    </fieldset> 
+}
+

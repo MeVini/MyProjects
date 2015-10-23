@@ -1,0 +1,16 @@
+﻿@model Idbm.Models.Movie
+
+@{
+    ViewBag.Title = "FillView";
+}
+    
+<body>
+<form action="Movie/DisplayView" method="post">
+Enter movie id :- <input type="text" name="Id" />
+<input type="submit" value="View Movie" />
+</form>
+<form action ="Movie/DisplayTable" method="post">
+<p>Click to view all movies</p>
+<input type="submit" value="View" />
+</form>
+</body>

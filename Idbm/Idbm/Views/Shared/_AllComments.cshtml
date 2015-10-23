@@ -1,0 +1,21 @@
+﻿@using Idbm.Models;
+@using System.Web.Mvc;
+
+@model IEnumerable<Idbm.Models.Comment>
+@{
+    ViewBag.Title = "_AllComments";
+}
+
+@foreach (Comment comment in @Model)
+{
+    <fieldset>
+        <legend class="text-success">@comment.FirstName</legend>
+        <div class="form-group">@comment.Comments</div>
+        <div class="rating">
+            @for (int i = 1; i <= @comment.Rating; i++)
+            {
+                <span>★</span>
+            }
+        </div>
+    </fieldset>
+}

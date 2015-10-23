@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Idbm", "Idbm\Idbm.csproj", "{CDD40D16-43C4-4483-B684-A368CE0D7D11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdbmDAL", "IdbmDAL\IdbmDAL.csproj", "{AA5AF689-31D2-4246-9350-ACFFCBD0DA5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDD40D16-43C4-4483-B684-A368CE0D7D11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDD40D16-43C4-4483-B684-A368CE0D7D11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDD40D16-43C4-4483-B684-A368CE0D7D11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDD40D16-43C4-4483-B684-A368CE0D7D11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA5AF689-31D2-4246-9350-ACFFCBD0DA5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA5AF689-31D2-4246-9350-ACFFCBD0DA5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA5AF689-31D2-4246-9350-ACFFCBD0DA5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA5AF689-31D2-4246-9350-ACFFCBD0DA5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

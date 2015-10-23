@@ -1,0 +1,26 @@
+﻿@model Idbm.Models.Movies
+
+@{
+    ViewBag.Title = "DisplayView";
+}
+@{
+    var base64 = Convert.ToBase64String(Model.Image);
+    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+}
+<h2>DisplayView</h2>
+<div>
+Movie Id: @Model.Id<br />
+
+Movie title: @Model.Title<br />
+
+Movie Description @Model.Description<br />
+
+Release date: @Model.ReleaseDate.ToString("dd MMM yyyy")<br />
+
+Genere: @Model.Genre<br />
+
+Review: @Model.Review<br />
+
+Image: <img src="@imgSrc" />
+   
+</div> 

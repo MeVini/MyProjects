@@ -1,0 +1,39 @@
+﻿@model Idbm.Models.Movies
+
+@{
+    ViewBag.Title = "DisplayMovieByTitle";
+}
+@{
+    var base64 = Convert.ToBase64String(Model.Image);
+    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<div class="row">
+    <div class="col-md-7">
+        <div class="form-group">
+            <label class="text-info">Title:</label>
+            @Model.Title<br />
+            <label class="text-info">Description:</label>
+            @Model.Description<br />
+            <label class="text-info">Release date:</label>
+            @Model.ReleaseDate.ToString("dd MMM yyyy")<br />
+            <label class="text-info">Genere:</label>
+            @Model.Genre<br />
+            <label class="text-info">Review:</label>
+            @Model.Review<br />
+        </div>
+    </div>
+    <div class="col-md-5">
+        <img src="@imgSrc" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Partial("_RatingComment")
+    </div>
+</div>
+ @Html.Action("GetCommentForMovieTitle", "Login", new { title = @Model.Title })
+    
+
+
+@Scripts.Render("~/bundles/jqueryval")

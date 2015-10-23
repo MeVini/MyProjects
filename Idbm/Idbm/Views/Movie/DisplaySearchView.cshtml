@@ -1,0 +1,20 @@
+﻿@model Idbm.Models.Movies
+
+@{
+    ViewBag.Title = "DisplaySearchView";
+}
+@ViewBag.AllTitle
+<h2>DisplaySearchView</h2>
+<table>
+    <tr>
+        <th>Title</th>
+    </tr>
+    
+        @foreach (var Title in (List<string>)ViewBag.AllTitle)
+        {
+        <tr>
+           <td>@Html.ActionLink(@Title, "DisplayMovieByTitle", "Movie", new { Mtitle = @Title},null)</td>
+       </tr>
+        }    
+    
+</table>

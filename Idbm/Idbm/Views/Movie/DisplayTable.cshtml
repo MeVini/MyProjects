@@ -1,0 +1,70 @@
+﻿@using Idbm.Models;
+@using System.Web.Mvc;
+ 
+@model IEnumerable<Idbm.Models.Movie>
+@{
+    ViewBag.Title = "DisplayTable";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <title></title>
+<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"/>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+</head>
+ <body>
+<form action="DisplayMovieByTitle" method="post">
+Search by Title :-<input type="text" name="title" id="SearchTitle" />
+<input type="submit" value="Search" />
+</form>
+<h2>DisplayTable</h2>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>ReleaseDate</th>
+        <th>Genre</th>
+        <th>Review</th>
+        <th>Image</th>
+    </tr>
+     @foreach(Movie movie in @Model)
+    {
+         <tr>
+             <td> @Html.ActionLink(@movie.Title, "DisplayMovieByTitle", "Movie", new { title = @movie.Title },null)</td>
+             <td> @movie.Description</td>
+             <td> @movie.ReleaseDate.ToString("dd MMM yyyy")</td>
+             <td> @movie.Genre</td>
+             <td> @movie.Review</td>
+             <td> @{ var base64 = Convert.ToBase64String(movie.Image);
+                     var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                   }
+                  <img src="@imgSrc" /></td>
+         </tr>
+     }
+</table> 
+
+    </body>
+    </html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#SearchTitle").autocomplete({
+            source: function(request,response) {
+                $.ajax({
+                    url: "/Movie/AutocompleteSuggestions",
+                    type: "POST",
+                    dataType: "json",
+                    minlength: 2,
+                    data: { term: request.term },
+                    success: function (data) {
+                            response(data);
+
+                    }
+                   
+                })
+            },
+            messages: {
+                noResults: "", results: ""
+            }
+        });
+    })
+</script>

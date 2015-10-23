@@ -1,0 +1,11 @@
+C:\Users\vshah\documents\visual studio 2012\Projects\Idbm\IdbmDAL\bin\Debug\IdbmDAL.dll
+C:\Users\vshah\documents\visual studio 2012\Projects\Idbm\IdbmDAL\bin\Debug\IdbmDAL.pdb
+C:\Users\vshah\documents\visual studio 2012\Projects\Idbm\IdbmDAL\bin\Debug\MySql.Data.dll
+C:\Users\vshah\documents\visual studio 2012\Projects\Idbm\IdbmDAL\bin\Debug\MySql.Data.Entity.dll
+C:\Users\vshah\documents\visual studio 2012\Projects\Idbm\IdbmDAL\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\vshah\documents\visual studio 2012\Projects\Idbm\IdbmDAL\bin\Debug\MySql.Fabric.Plugin.dll
+C:\Users\vshah\documents\visual studio 2012\Projects\Idbm\IdbmDAL\bin\Debug\MySql.Web.dll
+C:\Users\vshah\documents\visual studio 2012\Projects\Idbm\IdbmDAL\bin\Debug\System.Data.dll
+C:\Users\vshah\documents\visual studio 2012\Projects\Idbm\IdbmDAL\obj\Debug\IdmbDAL.csprojResolveAssemblyReference.cache
+C:\Users\vshah\documents\visual studio 2012\Projects\Idbm\IdbmDAL\obj\Debug\IdbmDAL.dll
+C:\Users\vshah\documents\visual studio 2012\Projects\Idbm\IdbmDAL\obj\Debug\IdbmDAL.pdb
